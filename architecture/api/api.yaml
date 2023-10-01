@@ -1,0 +1,62 @@
+openapi: 3.0.3
+servers:
+  - url: 'http://localhost/v1'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+paths:
+  /user:
+    get:
+      description: Get's the current user
+      responses:
+        200:
+          description: user response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /admin/user:
+    post:
+      description: Creates a user
+      responses:
+        200:
+          description: Creates a user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+         application/json:
+           schema:
+            type: object
+            properties:
+              name:
+                type: string
