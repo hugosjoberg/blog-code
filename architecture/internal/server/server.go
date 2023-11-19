@@ -10,13 +10,13 @@ import (
 
 type handlers struct {
 	user.UserHandler
-	admin.AdmimHandler
+	admin.AdminHandler
 }
 
 func newHandler() *handlers {
 	return &handlers{
 		UserHandler:  *user.NewUserHandler(),
-		AdmimHandler: *admin.NewAdmimHandler(),
+		AdminHandler: *admin.NewAdminHandler(),
 	}
 }
 
